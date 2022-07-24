@@ -1,6 +1,7 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 import express from "express";
+import 'express-async-errors';
 // db and authentication //
 import mongoose from 'mongoose';
 import connectDB from "./db/connect.js";
