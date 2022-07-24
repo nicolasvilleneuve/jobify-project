@@ -1,8 +1,8 @@
 import express from 'express';
 
-const router = express.Router();
-
 import {createJob, deleteJob, getAllJobs, updateJob, showStats} from "../controllers/jobsController.js";
+
+const router = express.Router();
 
 router.route("/")
     .post(createJob)

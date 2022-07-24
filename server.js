@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/v1/auth', authRouter);
-app.use("/api/vi/jobs", jobsRouter);
+app.use('/api/v1/jobs', jobsRouter);
 
 
 // Middleware

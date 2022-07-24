@@ -9,7 +9,7 @@ router.route('/register')
 router.route('/login')
     .post(login);
 
-router.route("/update")
+router.route("/update-user")
     .patch(updateUser);
 
 export default router;
