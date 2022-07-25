@@ -17,6 +17,7 @@ import errorHandlerMiddleware from "./middleware/error-handler.js";
 const app = express();
 app.use(express.json());
 
+
 app.get('/', (req, res) => {
     res.send("Welcome!");
 });
