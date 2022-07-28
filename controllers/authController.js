@@ -21,6 +21,7 @@ const register = async (req, res) => {
     res.status(StatusCodes.CREATED).json({user: {email: user.email, lastName: user.lastName, location: user.location, name: user.name}, token});
 
 };
+
 const login = async (req, res) => {
   const {email, password} = req.body;
   if (!email || !password) {
@@ -39,9 +40,8 @@ const login = async (req, res) => {
     const token = user.createJWT();
     user.password = undefined;
     res.status(StatusCodes.OK).json({user, token, location: user.location});
-
-  res.send('logged in user');
 };
+
 const updateUser = async (req, res) => {
   res.send('Updated user')
 
