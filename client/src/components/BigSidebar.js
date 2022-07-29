@@ -1,11 +1,15 @@
 import Wrapper from "../assets/wrappers/BigSidebar";
+import {Logo, NavLinks} from "./index";
 
 const BigSidebar = () => {
     return (
         <Wrapper>
             <div>
-                <h4>BigSidebar</h4>
+                <header>
+                <Logo/>
+                </header>
             </div>
+            <NavLinks />
         </Wrapper>
     )
 };
