@@ -43,7 +43,7 @@ const login = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  res.send('Updated user')
+    res.send('Updated user');
 
 };
 
