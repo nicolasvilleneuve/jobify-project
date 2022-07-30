@@ -79,9 +79,12 @@ const AppProvider = ({children}) => {
         dispatch({type: LOGOUT_USER})
         removeUserFromLocalStorage();
     }
+    const updateUser = async (currentUser) => {
+        console.log(currentUser);
+    };
 
     return (
-        <AppContext.Provider value={{...state, displayAlert, setupUser, toggleSidebar, logoutUser}}>
+        <AppContext.Provider value={{...state, displayAlert, setupUser, toggleSidebar, logoutUser, updateUser}}>
         {children}
         </AppContext.Provider>
     );
