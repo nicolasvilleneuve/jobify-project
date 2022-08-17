@@ -9,7 +9,7 @@ import {
     SETUP_USER_SUCCESS,
     TOGGLE_SIDEBAR,
     LOGOUT_USER, UPDATE_USER_SUCCESS, UPDATE_USER_BEGIN, UPDATE_USER_ERROR, HANDLE_CHANGE, CLEAR_VALUES,
-    CREATE_JOB_SUCCESS, CREATE_JOB_ERROR, CREATE_JOB_BEGIN, GET_JOBS_BEGIN, GET_JOBS_SUCCESS
+    CREATE_JOB_SUCCESS, CREATE_JOB_ERROR, CREATE_JOB_BEGIN, GET_JOBS_BEGIN, GET_JOBS_SUCCESS, SET_EDIT_JOB
 } from "./actions";
 
 const token = localStorage.getItem('token');
@@ -213,7 +213,11 @@ const AppProvider = ({children}) => {
     }
     // EDITING JOBS //
     const setEditJob = (id) => {
-        console.log(`set edit job: ${id}`);
+        dispatch({type: SET_EDIT_JOB, payload: {id}});
+    };
+
+    const editJob = () => {
+        console.log('edit job');
     };
 
     // DELETING JOBS //
@@ -222,7 +226,7 @@ const AppProvider = ({children}) => {
     };
 
     return (
-        <AppContext.Provider value={{...state, displayAlert, setupUser, toggleSidebar, logoutUser, updateUser, handleChange, clearValues, createJob, getJobs, setEditJob, deleteJob}}>
+        <AppContext.Provider value={{...state, displayAlert, setupUser, toggleSidebar, logoutUser, updateUser, handleChange, clearValues, createJob, getJobs, setEditJob, deleteJob, editJob}}>
             {children}
         </AppContext.Provider>
     );
