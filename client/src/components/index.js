@@ -6,4 +6,10 @@ import SmallSidebar from "./SmallSidebar";
 import BigSidebar from "./BigSidebar";
 import NavLinks from "./NavLinks";
 import FormRowSelect from "./FormRowSelect";
-export {Logo, FormRow, Alert, BigSidebar, SmallSidebar, Navbar, NavLinks, FormRowSelect};
+import SearchContainer from "./SearchContainer";
+import JobsContainer from "./JobsContainer";
+
+
+
+
+export {Logo, FormRow, Alert, BigSidebar, SmallSidebar, Navbar, NavLinks, FormRowSelect, SearchContainer, JobsContainer};

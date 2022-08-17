@@ -45,6 +45,7 @@ const AppContext = React.createContext();
 const AppProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    // AUTHENTICATED REQ MAKER //
     const authFetch = axios.create({
         baseURL: 'api/v1/'
     });
@@ -73,6 +74,7 @@ const AppProvider = ({children}) => {
             return Promise.reject(error);
         })
 
+    // HANDLING CHANGES //
     const handleChange = ({name, value}) => {
         dispatch({
             type: HANDLE_CHANGE,
@@ -80,6 +82,7 @@ const AppProvider = ({children}) => {
         })
     }
 
+    // ALERT FUNCTIONALITY //
     const displayAlert = () => {
         dispatch({type: DISPLAY_ALERT});
         clearAlert();
@@ -91,6 +94,7 @@ const AppProvider = ({children}) => {
         }, 3000)
     };
 
+    // LOCAL STORAGE //
     const addUserToLocalStorage = ({user, token, location}) => {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', token);
@@ -102,6 +106,7 @@ const AppProvider = ({children}) => {
         localStorage.removeItem('location');
     }
 
+    // USER SETUP //
 
     const setupUser = async ({currentUser, endPoint, alertText}) => {
         dispatch({type: SETUP_USER_BEGIN});
@@ -124,10 +129,14 @@ const AppProvider = ({children}) => {
     const toggleSidebar = () => {
         dispatch({type: TOGGLE_SIDEBAR});
     };
+
+    // LOGGING USER OUT //
     const logoutUser = () => {
         dispatch({type: LOGOUT_USER})
         removeUserFromLocalStorage();
     }
+
+    // UPDATING USER INFO //
     const updateUser = async (currentUser) => {
         dispatch({type: UPDATE_USER_BEGIN})
         try {
@@ -156,6 +165,7 @@ const AppProvider = ({children}) => {
         dispatch({type: CLEAR_VALUES});
     };
 
+    // CREATING JOBS //
     const createJob = async () => {
         dispatch({type: CREATE_JOB_BEGIN});
         try {
@@ -180,6 +190,7 @@ const AppProvider = ({children}) => {
         clearAlert();
     }
 
+    // GET ALL JOBS //
     const getJobs = async () => {
         let url = `/jobs`;
         dispatch({type: GET_JOBS_BEGIN})
@@ -200,9 +211,18 @@ const AppProvider = ({children}) => {
         }
         clearAlert();
     }
+    // EDITING JOBS //
+    const setEditJob = (id) => {
+        console.log(`set edit job: ${id}`);
+    };
+
+    // DELETING JOBS //
+    const deleteJob = (id) => {
+        console.log(`delete: ${id}`);
+    };
 
     return (
-        <AppContext.Provider value={{...state, displayAlert, setupUser, toggleSidebar, logoutUser, updateUser, handleChange, clearValues, createJob}}>
+        <AppContext.Provider value={{...state, displayAlert, setupUser, toggleSidebar, logoutUser, updateUser, handleChange, clearValues, createJob, getJobs, setEditJob, deleteJob}}>
             {children}
         </AppContext.Provider>
     );
