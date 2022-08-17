@@ -23,12 +23,12 @@ const AddJob = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // if (!position || !company || !jobLocation) {
-        //     displayAlert();
-        //     return
-        // }
+        if (!position || !company || !jobLocation) {
+            displayAlert();
+            return
+        }
         if (isEditing) {
-            // evenatually editJob();
+            // eventually editJob();
             return
         }
         createJob();
