@@ -21,6 +21,12 @@ const Job = ({_id, company, position, jobLocation, jobType, createdAt, status}) 
                 </div>
             </header>
             <div className="content">
+                <div className="content-center">
+                    <JobInfo icon={<FaLocationArrow/>} text={jobLocation}/>
+                    <JobInfo icon={<FaCalendarAlt/>} text={date}/>
+                    <JobInfo icon={<FaBriefcase/>} text={position}/>
+                    <div className={`status ${status}`}>{status}</div>
+                </div>
                 <footer>
                     <div className="action">
                         <Link
@@ -39,7 +45,6 @@ const Job = ({_id, company, position, jobLocation, jobType, createdAt, status}) 
                         </button>
                     </div>
                 </footer>
-
             </div>
         </Wrapper>
     )
