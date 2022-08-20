@@ -20,7 +20,13 @@ import {
     GET_JOBS_BEGIN,
     GET_JOBS_SUCCESS,
     SET_EDIT_JOB,
-    DELETE_JOB_BEGIN, EDIT_JOB_BEGIN, EDIT_JOB_SUCCESS, EDIT_JOB_ERROR, SHOW_STATS_BEGIN, SHOW_STATS_SUCCESS
+    DELETE_JOB_BEGIN,
+    EDIT_JOB_BEGIN,
+    EDIT_JOB_SUCCESS,
+    EDIT_JOB_ERROR,
+    SHOW_STATS_BEGIN,
+    SHOW_STATS_SUCCESS,
+    CLEAR_FILTERS
 } from "./actions";
 
 const token = localStorage.getItem('token');
@@ -50,7 +56,12 @@ const initialState = {
     page: 1,
     numOfPages: 1,
     stats: {},
-    monthlyApplications: []
+    monthlyApplications: [],
+    search: '',
+    searchStatus: 'all',
+    searchType: "all",
+    sort: "latest",
+    sortOptions: ['latest', 'oldest', 'a-z', 'z-a']
 };
 
 const AppContext = React.createContext();
@@ -275,8 +286,12 @@ const AppProvider = ({children}) => {
         clearAlert();
     }
 
+    const clearFilters = () => {
+        dispatch({type: CLEAR_FILTERS})
+    }
+
     return (
-        <AppContext.Provider value={{...state, displayAlert, setupUser, toggleSidebar, logoutUser, updateUser, handleChange, clearValues, createJob, getJobs, setEditJob, deleteJob, editJob, showStats}}>
+        <AppContext.Provider value={{...state, displayAlert, setupUser, toggleSidebar, logoutUser, updateUser, handleChange, clearValues, createJob, getJobs, setEditJob, deleteJob, editJob, showStats, clearFilters}}>
             {children}
         </AppContext.Provider>
     );
