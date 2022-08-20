@@ -1,12 +1,8 @@
+// eslint-disable-next-line
+
 import {
     DISPLAY_ALERT,
     CLEAR_ALERT,
-    REGISTER_USER_SUCCESS,
-    REGISTER_USER_BEGIN,
-    REGISTER_USER_ERROR,
-    LOGIN_USER_ERROR,
-    LOGIN_USER_SUCCESS,
-    LOGIN_USER_BEGIN,
     SETUP_USER_BEGIN,
     SETUP_USER_ERROR,
     SETUP_USER_SUCCESS,
@@ -26,11 +22,10 @@ import {
     DELETE_JOB_BEGIN,
     EDIT_JOB_BEGIN,
     EDIT_JOB_SUCCESS,
-    EDIT_JOB_ERROR, SHOW_STATS_BEGIN, SHOW_STATS_SUCCESS
+    EDIT_JOB_ERROR, SHOW_STATS_BEGIN, SHOW_STATS_SUCCESS, CLEAR_FILTERS
 } from "./actions";
 
 import {initialState} from "./appContext";
-import {CREATED} from "http-status-codes";
 
 const reducer = (state, action) => {
     if (action.type === DISPLAY_ALERT) {
@@ -208,7 +203,7 @@ const reducer = (state, action) => {
             ...state, isLoading: false, stats: action.payload.stats, monthlyApplications: action.payload.monthlyApplications
         }
     }
-    if (action.type === CLEAR_VALUES) {
+    if (action.type === CLEAR_FILTERS) {
         return {
             ...state,
             search: '',
