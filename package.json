@@ -8,7 +8,9 @@
     "build-client": "cd client && npm run build",
     "server": "nodemon server --ignore client",
     "client": "npm start --prefix client",
-    "start": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client \""
+    "start": "concurrently --kill-others-on-fail \" npm run server\" \" npm run client \"",
+    "heroku-postbuild": "npm run install-client &&npm run build-client",
+    "install-client": "cd client && npm install"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +37,9 @@
     "styled-components": "^5.3.5",
     "validator": "^13.7.0",
     "xss-clean": "^0.1.1"
+  },
+  "engines": {
+    "node": "16.x"
   },
   "devDependencies": {
     "concurrently": "^7.3.0",
